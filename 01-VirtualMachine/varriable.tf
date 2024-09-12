@@ -10,3 +10,35 @@ variable "instance_type" {
     description = "instace size"
 }
 
+variable "tags" {
+    type = map #optional
+    default = {
+        name = "backend"
+        Project = "expense"
+        component = "mysql"
+        environemt = "dev"
+        Terraform = "True"
+    }
+}
+
+variable "sg_name" {
+    default = "allow-ssh"
+}
+
+variable "description" {
+    default = "Allow prot number 22 for SSH access"
+}
+
+variable "from_port" {
+    default = "22"
+}
+variable "to_port" {
+    default = "22"
+}
+variable "protocol" {
+    default = "tcp"
+}
+variable "cidr_blocks" {
+    type = list(string)
+    default = [ "0.0.0.0/0" ]
+}
