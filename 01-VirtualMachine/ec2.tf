@@ -17,15 +17,16 @@ egress {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+tags = {
+  name = "allow_ssh"
+  }
 }
 
-
-
-
-/* /* resource "aws_instance" "this" {
-  ami                     = "ami-0dcc1e21636832c5d"
-  instance_type           = "m5.large"
-  host_resource_group_arn = "arn:aws:resource-groups:us-west-2:012345678901:group/win-testhost"
-  tenancy                 = "host"
-} */
- 
+resource "aws_instance" "tf-vm1" {
+  ami = "ami-09c813fb71547fc4f"
+  instance_type = "t3.micro"
+  vpc_security_group_ids = [aws_security_group.tf-sg.id]
+  tags = {
+  name = "TF-VM"
+  }
+}
