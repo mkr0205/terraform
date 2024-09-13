@@ -1,10 +1,16 @@
 resource "aws_instance" "tfVM" {
-  count         = 3
+  count         = length(var.instance_names)
   ami           = var.ami_id
   instance_type = var.instance_type
-  tags = {
-    name = var.instance_names[count.index]
-  }
+#   tags = {
+#     name = var.instance_names[count.index]
+#   }
+    tags = merge(
+        var.common_tag,
+        {
+            name = var.instance_names[count.index]
+        }
+    )
 }
 
 resource "aws_security_group" "tfSg" {
@@ -26,5 +32,10 @@ resource "aws_security_group" "tfSg" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = var.tags
+  tags = merge(
+    var.common_tag,
+    {
+        name = "allow-ssh"
+    }
+  )
 }
