@@ -1,44 +1,42 @@
-variable "ami-id" {
-    type = string
-    default = "ami-09c813fb71547fc4f"
-    description = "devops-practice image"  
+variable "ami_id" {
+  type = string
+  default = "ami-09c813fb71547fc4f"
 }
-
 variable "instance_type" {
-    type = string
-    default = "t3.micro"
-    description = "instace size"
+  default = "t3.micro"
 }
-
 variable "tags" {
-    type = map #optional
-    default = {
-        name = "backend"
-        Project = "expense"
-        component = "mysql"
-        environemt = "dev"
-        Terraform = "True"
-    }
+  type = map
+  default = {
+    name = "backend"
+    project = "expense"
+    enviroment = "dev"
+    terraform = "True"
+  }
 }
-
-variable "sg_name" {
-    default = "allow-ssh"
+variable "ssh-sg" {
+  default = "ssh-allow"
 }
 
 variable "description" {
-    default = "Allow prot number 22 for SSH access"
+  default = "Allow SSH"
+}
+variable "from_port" {
+  default = "22"
 }
 
-variable "from_port" {
-    default = "22"
-}
 variable "to_port" {
-    default = "22"
+  default = "22"
 }
 variable "protocol" {
-    default = "tcp"
+  default = "tcp"
 }
+
 variable "cidr_blocks" {
-    type = list(string)
-    default = [ "0.0.0.0/0" ]
+  type = list(string)
+  default = ["0.0.0.0/0"]
+}
+
+variable "enviroment" {
+  default = "dev"
 }

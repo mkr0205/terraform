@@ -1,21 +1,18 @@
 resource "aws_instance" "tfvm" {
-    ami = var.ami-id
-    instance_type = var.environemt == "pod" ? "t3.small" : "t3.micro"
-    vpc_security_group_ids = [aws_security_group.tf-sg.id]
-    tags = var.tags
-  }
-
-resource "aws_security_group" "tf-sg" {
-  name = var.sg_name
-  description = var.description
+  ami = var.ami_id
+  instance_type = var.enviroment == "pod" ? "t3.small" : "t3.micro"
   tags = var.tags
+}
 
-  #Block
+resource "aws_security_group" "tfRg" {
+  name = var.ssh-sg
+  description = var.description
+
   ingress {
       from_port        = var.from_port
       to_port          = var.to_port
       protocol         = var.protocol
-      cidr_blocks      = ["0.0.0.0/0"] #Allow all
+      cidr_blocks      = var.cidr_blocks #Allow all
       ipv6_cidr_blocks = ["::/0"]
   }
   # Block
@@ -27,4 +24,6 @@ resource "aws_security_group" "tf-sg" {
       ipv6_cidr_blocks = ["::/0"]
   }
 }
+
+
 
