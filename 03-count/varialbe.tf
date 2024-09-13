@@ -5,6 +5,10 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
+variable "sgname" {
+  default = "ssh-allow"
+}
+
 variable "tags" {
   default = {
     name = "expense"
@@ -22,6 +26,10 @@ variable "to_port" {
 }
 
 variable "cidr_blocks" {
-  type = list(string)
+  type    = list(string)
   default = ["0.0.0.0/0"]
+}
+variable "instance_names" {
+  type    = list(string)
+  default = ["mysql", "backed", "fronted"]
 }
