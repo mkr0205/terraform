@@ -23,3 +23,11 @@ variable "zone_id" {
 variable "domain_name" {
   default = "devopstechi.online"
 }
+variable "ingress_ports" {
+   type = list(number)
+   default = [ 22, 80, 443, 8080, 3306 ]
+}
+variable "cidr_blocks" {
+  type = list(string)
+  default = ["0.0.0.0/0"]
+}
