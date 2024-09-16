@@ -12,11 +12,11 @@ resource "aws_instance" "tfvm" {
     user     = "root"
     password = var.root_password
     host     = self.public_ip
-  }
+   }
     provisioner "remote-exec" {
       inline = [
-        "sudo yum install nginx -y"
-        "sudo systemctl start nginx"
+        "sudo yum install nginx -y",
+        "sudo systemctl start nginx",
       ]
     }
   }
