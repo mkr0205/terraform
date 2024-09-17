@@ -1,7 +1,7 @@
 resource "aws_instance" "tfvm" {
   count = length(var.instance_name)
   ami = data.aws_ami.osimage.id
-  instance_type = var.instance == "mysql" ? "t3.small" : "t3.micro"
+  instance_type = var.instance_name[count.index] == "mysql" ? "t3.small" : "t3.micro"
   vpc_security_group_ids = [aws_security_group.tfsg.id]
   tags = merge(
         var.comman_tags,
