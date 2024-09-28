@@ -14,7 +14,7 @@ resource "aws_instance" "tfvm" {
 
 resource "aws_security_group" "tfsg" {
   name = var.sgname
-  description = var.description
+  description = var.sg_description
 
   egress {
     from_port        = var.from_port

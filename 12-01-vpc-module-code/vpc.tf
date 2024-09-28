@@ -6,5 +6,5 @@ module "vpc" {
   private_subnet_cidrs = var.private_subnet_cidrs
   database_subnet_cidrs = var.database_subnet_cidrs
   common_tags = var.common_tags
-
+  
 }

@@ -1,5 +1,5 @@
 variable "instance_type" {
-  default = "te.micro"
+  default = "t3.micro"
 }
 variable "instance" {
   type = map
