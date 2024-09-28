@@ -1,0 +1,41 @@
+1 # Terraform AWs VPC Module Customised
+
+This module is going to created the following resources, for HA we are going to get first 2 AZ
+* vpc
+* Internet Gateway associate with VPC
+* 2 public subnets
+* 2 private subnets
+* 2 database subnets
+* Database subnet group
+* 1 Elastic IP
+* NAT Gateway
+* Public route table
+* Private route table
+* Database rotue table
+* Routes on above 3 subnets
+* Route table association with subnets4
+* Peering with default VPC(if Required)
+* Peering routes in acceptor and requestor route table
+
+# Inputes
+* project_name :(Mandatory): user must supply their project name
+* enviornment (Mandarotry) : User must supply their evnviroment
+* vpc_cidr (mandatory) : User must supply their VPC CIDR
+* enable_dns_hostnames (Optional) : default is true.
+common_tags (Optional): Default is empty , user can supply tags in list(string)
+* vpc_tags (Optional): Default is empty. User can supply tags in list(string) format
+* igw_tags (Optinal) : Default is empty. User can supply tags in list(string) format
+* public_subnet_cidr (mandatory): user must supply only 2 public subnet CIDR.
+* public_subnet_tags (Optiona): Default is empty. User can supply tags in list(string)
+* private_subnet_cidr (mandatory): user must supply only 2 private subnet CIDR.
+* private_subnet_tags (Optiona): Default is empty. User can supply tags in list(string)
+* database_subnet_cidr (mandatory): user must supply only 2 dagtabase subnet CIDR.
+* database_subnet_tags (Optiona): Default is empty. User can supply tags in list(string)
+* nat_gateway_tags (Optinal) : Default is empty. User can supply tags in list(string) format.
+* public_route_table_tags (optional): Default is empty. User can supply tags in list(string) format.
+* private_route_table_tags (optional): Default is empty. User can supply tags in list(string) format.
+*database_route_table_tags (optional): Default is empty. User can supply tags in list(string) format.
+* is_peering_required (Optional) : Default to false
+* vpc_peering_tags (Optional): Default is empty. User can supply tags in list(string) format.
+* 
+
